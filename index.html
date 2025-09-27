@@ -72,4 +72,18 @@
   </div>
 
   <!-- AUDIO DE FONDO -->
-  <audio autoplay loop playsinline id=
+  <audio autoplay loop playsinline id="bg-music">
+    <source src="audio.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <script>
+    // Esto quita el mute cuando el usuario hace clic en cualquier parte
+    document.body.addEventListener("click", function() {
+      const music = document.getElementById("bg-music");
+      music.muted = false;
+      music.play();
+    });
+  </script>
+</body>
+</html>
