@@ -72,18 +72,18 @@
   </div>
 
   <!-- AUDIO DE FONDO -->
-  <audio autoplay loop playsinline id="bg-music">
-    <source src="audio.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio HTML5.
-  </audio>
+<div id="pantalla-inicio" style="position:fixed;top:0;left:0;width:100%;height:100%;background:black;color:white;display:flex;align-items:center;justify-content:center;z-index:9999;">
+  <h1 style="font-size:2em;cursor:pointer;">✨ Entrar ✨</h1>
+</div>
 
-  <script>
-    // Esto quita el mute cuando el usuario hace clic en cualquier parte
-    document.body.addEventListener("click", function() {
-      const music = document.getElementById("bg-music");
-      music.muted = false;
-      music.play();
-    });
-  </script>
+<script>
+  const inicio = document.getElementById("pantalla-inicio");
+  const music = document.getElementById("bg-music");
+  inicio.addEventListener("click", () => {
+    inicio.style.display = "none"; // ocultamos la pantalla de inicio
+    music.play(); // inicia la música
+  });
+</script>
+
 </body>
 </html>
