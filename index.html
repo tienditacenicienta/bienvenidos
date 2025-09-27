@@ -9,6 +9,7 @@
       margin: 0;
       padding: 0;
       height: 100%;
+      width: 100%;
       overflow: hidden;
       font-family: Arial, sans-serif;
     }
@@ -55,48 +56,13 @@
       border-radius: 12px;
       cursor: pointer;
       animation: pulse 2s infinite;
-      z-index: 10;
+      z-index: 100;
     }
 
     @keyframes pulse {
       0% { transform: translate(-50%, -50%) scale(1); }
       50% { transform: translate(-50%, -50%) scale(1.1); }
       100% { transform: translate(-50%, -50%) scale(1); }
-    }
-
-    /* Popup */
-    .popup {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      justify-content: center;
-      align-items: center;
-      z-index: 20;
-    }
-
-    .popup-contenedor {
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      text-align: center;
-      width: 300px;
-      max-width: 80%;
-    }
-
-    .btn-cerrar {
-      margin-top: 20px;
-      background: #ff69b4;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .btn-cerrar:hover {
-      background: #ff1493;
     }
   </style>
 </head>
@@ -107,30 +73,14 @@
   <!-- Botón principal -->
   <button class="btn-entrar" onclick="iniciar()">La Tiendita de Cenicienta</button>
 
-  <!-- Popup -->
-  <div id="popup" class="popup">
-    <div class="popup-contenedor">
-      <h2>✨ Bienvenidos ✨</h2>
-      <p>Aquí aparecerá el contenido del popup.</p>
-      <button class="btn-cerrar" onclick="cerrarPopup()">Cerrar</button>
-    </div>
-  </div>
-
   <!-- Audio oculto -->
   <audio id="musica" src="audio.mp3"></audio>
 
   <script>
     function iniciar() {
-      // Reproducir audio
       let audio = document.getElementById("musica");
       audio.play().catch(e => console.log("Reproducción bloqueada:", e));
-
-      // Abrir popup
-      document.getElementById("popup").style.display = "flex";
-    }
-
-    function cerrarPopup() {
-      document.getElementById("popup").style.display = "none";
+      alert("🎶 Música iniciada (si el navegador lo permite).");
     }
   </script>
 
