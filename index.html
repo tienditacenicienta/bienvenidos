@@ -56,6 +56,7 @@
       cursor: pointer;
       animation: pulse 2s infinite;
       transition: background 0.3s ease;
+      z-index: 10;
     }
 
     .btn-entrar:hover {
@@ -68,7 +69,7 @@
       100% { transform: translate(-50%, -50%) scale(1); }
     }
 
-    /* Estilos del popup */
+    /* Popup */
     .popup {
       display: none;
       position: fixed;
@@ -77,6 +78,7 @@
       background: rgba(0, 0, 0, 0.6);
       justify-content: center;
       align-items: center;
+      z-index: 20;
     }
 
     .popup-contenedor {
@@ -108,7 +110,7 @@
   <div class="slider"></div>
 
   <!-- Botón principal -->
-  <button class="btn-entrar" onclick="abrirPopup()">La Tiendita de Cenicienta</button>
+  <button class="btn-entrar" onclick="iniciar()">La Tiendita de Cenicienta</button>
 
   <!-- Popup -->
   <div id="popup" class="popup">
@@ -119,8 +121,16 @@
     </div>
   </div>
 
+  <!-- Audio oculto -->
+  <audio id="musica" src="audio.mp3"></audio>
+
   <script>
-    function abrirPopup() {
+    function iniciar() {
+      // Reproducir audio
+      let audio = document.getElementById("musica");
+      audio.play().catch(e => console.log("Reproducción bloqueada:", e));
+
+      // Abrir popup
       document.getElementById("popup").style.display = "flex";
     }
 
