@@ -19,7 +19,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
+      z-index: -1; /* fondo */
     }
 
     .slides img {
@@ -31,7 +31,14 @@
       animation: fade 30s infinite;
     }
 
-    /* Animación base: cada imagen aparece 3s (10% de 30s) */
+    /*
+      fade: cada imagen dura 3s (10% del ciclo de 30s).
+      - 0% → oculta
+      - 5% → empieza a aparecer
+      - 10% → visible
+      - 15% → empieza a desvanecerse
+      - luego queda oculta hasta su turno siguiente
+    */
     @keyframes fade {
       0%   { opacity: 0; }
       5%   { opacity: 1; }
@@ -40,25 +47,7 @@
       100% { opacity: 0; }
     }
 
-    /* Asignar el "turno" a cada imagen */
+    /* Turnos: cada imagen se retrasa 3s respecto a la anterior */
     .slides img:nth-child(1)  { animation-delay: 0s; }
     .slides img:nth-child(2)  { animation-delay: 3s; }
-    .slides img:nth-child(3)  { animation-delay: 6s; }
-    .slides img:nth-child(4)  { animation-delay: 9s; }
-    .slides img:nth-child(5)  { animation-delay: 12s; }
-    .slides img:nth-child(6)  { animation-delay: 15s; }
-    .slides img:nth-child(7)  { animation-delay: 18s; }
-    .slides img:nth-child(8)  { animation-delay: 21s; }
-    .slides img:nth-child(9)  { animation-delay: 24s; }
-    .slides img:nth-child(10) { animation-delay: 27s; }
-  </style>
-</head>
-<body>
-  <div class="slider">
-    <div class="slides">
-      <img src="fondo1.jpg" alt="Imagen 1">
-      <img src="fondo2.jpg" alt="Imagen 2">
-      <img src="fondo3.jpg" alt="Imagen 3">
-      <img src="fondo4.jpg" alt="Imagen 4">
-      <img src="fondo5.jpg" alt="Imagen 5">
-      <img src="fondo6.jpg" alt="Im
+    .slides img:nth-child(3)  { animation-de
