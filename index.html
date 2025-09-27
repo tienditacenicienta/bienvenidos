@@ -75,11 +75,16 @@
       backdrop-filter: blur(8px);
       border: none;
       border-radius: 50%;
-      font-size: 24px;
-      padding: 15px;
+      padding: 10px;
       cursor: pointer;
       z-index: 200;
       transition: transform 0.2s;
+    }
+
+    .audio-toggle img {
+      width: 40px;
+      height: 40px;
+      display: block;
     }
 
     .audio-toggle:hover {
@@ -128,21 +133,18 @@
       bottom: 15px;
       width: 100%;
       text-align: center;
-      color: white;
-      font-size: 18px;
       z-index: 120;
     }
 
-    footer a {
+    footer a img {
+      width: 40px;
+      height: 40px;
       margin: 0 10px;
-      text-decoration: none;
-      font-size: 26px;
-      color: white;
-      transition: 0.3s;
+      transition: transform 0.2s;
     }
 
-    footer a:hover {
-      color: yellow;
+    footer a img:hover {
+      transform: scale(1.2);
     }
   </style>
 </head>
@@ -164,38 +166,45 @@
   </div>
 
   <!-- Botón flotante de audio -->
-  <button class="audio-toggle" id="audioBtn" onclick="toggleAudio()">🔊</button>
+  <button class="audio-toggle" id="audioBtn" onclick="toggleAudio()">
+    <img id="audioIcon" src="bocina.png" alt="Audio">
+  </button>
 
   <!-- Footer con redes -->
   <footer>
-    <a href="https://instagram.com/tucuenta" target="_blank">📸</a>
-    <a href="https://tiktok.com/@tucuenta" target="_blank">🎵</a>
+    <a href="https://instagram.com/tucuenta" target="_blank">
+      <img src="ig.png" alt="Instagram">
+    </a>
+    <a href="https://tiktok.com/@tucuenta" target="_blank">
+      <img src="tiktok.png" alt="TikTok">
+    </a>
   </footer>
 
   <script>
     let audio = document.getElementById("musica");
     let popup = document.getElementById("popup");
-    let audioBtn = document.getElementById("audioBtn");
+    let audioIcon = document.getElementById("audioIcon");
 
     function iniciar() {
       audio.play().catch(e => console.log("Reproducción bloqueada:", e));
       popup.style.display = "block";
+      audioIcon.src = "bocina.png"; // Activo
     }
 
     function toggleAudio() {
       if (audio.paused) {
         audio.play();
-        audioBtn.textContent = "🔊";
+        audioIcon.src = "bocina.png"; // Activo
       } else {
         audio.pause();
-        audioBtn.textContent = "🔇";
+        audioIcon.src = "bocinamute.png"; // Mute
       }
     }
 
     function cerrarPopup() {
       popup.style.display = "none";
       audio.pause();
-      audioBtn.textContent = "🔇";
+      audioIcon.src = "bocinamute.png"; // Mute al cerrar popup
     }
   </script>
 
