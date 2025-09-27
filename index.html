@@ -41,22 +41,29 @@
       100% { background-image: url('fondo1.jpg'); }
     }
 
-    /* Botón animado */
+    /* Botón animado con efecto vidrio */
     .btn-entrar {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: #ff69b4;
-      color: white;
       font-size: 24px;
       font-weight: bold;
       padding: 15px 30px;
       border: none;
       border-radius: 12px;
       cursor: pointer;
-      animation: pulse 2s infinite;
+      color: #fff;
       z-index: 100;
+
+      /* Fondo tipo vidrio pavonado */
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+
+      /* Animación sutil */
+      animation: pulse 2s infinite;
     }
 
     @keyframes pulse {
@@ -80,7 +87,6 @@
     function iniciar() {
       let audio = document.getElementById("musica");
       audio.play().catch(e => console.log("Reproducción bloqueada:", e));
-      alert("🎶 Música iniciada (si el navegador lo permite).");
     }
   </script>
 
