@@ -47,7 +47,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 180px;  /* ajusta el tamaño del GIF */
+      width: 180px;  /* tamaño del GIF */
       height: auto;
       cursor: pointer;
       animation: pulse 2s infinite;
@@ -63,7 +63,7 @@
     /* Icono flotante de audio */
     .audio-toggle {
       position: fixed;
-      bottom: 70px;
+      bottom: 120px; /* más arriba para no chocar con el footer */
       right: 20px;
       background: rgba(255, 255, 255, 0.3);
       backdrop-filter: blur(8px);
@@ -105,7 +105,7 @@
     }
 
     .popup img {
-      max-width: 120px;
+      max-width: 150px;
       margin-bottom: 10px;
     }
 
@@ -154,7 +154,7 @@
   <div class="slider"></div>
 
   <!-- GIF en lugar de botón -->
-  <img src="GIFCHANCHITO.gif" alt="Entrar" class="gif-entrar" onclick="iniciar()">
+  <img src="GIFCHANCHITO.gif" alt="Entrar" class="gif-entrar" id="gifChanchito" onclick="iniciar()">
 
   <!-- Audio oculto -->
   <audio id="musica" src="audio.mp3" loop></audio>
@@ -189,11 +189,13 @@
     let audio = document.getElementById("musica");
     let popup = document.getElementById("popup");
     let audioIcon = document.getElementById("audioIcon");
+    let gifChanchito = document.getElementById("gifChanchito");
 
     function iniciar() {
       audio.play().catch(e => console.log("Reproducción bloqueada:", e));
       popup.style.display = "block";
       audioIcon.src = "bocina.png"; // Activo
+      gifChanchito.style.display = "none"; // ocultar el GIF al abrir popup
     }
 
     function toggleAudio() {
@@ -210,6 +212,7 @@
       popup.style.display = "none";
       audio.pause();
       audioIcon.src = "bocinamute.png"; // Mute al cerrar popup
+      gifChanchito.style.display = "block"; // volver a mostrar el GIF
     }
   </script>
 
